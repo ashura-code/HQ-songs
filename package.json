@@ -1,0 +1,11 @@
+{
+  "name": "music",
+  "version": "1.0.0",
+  "description": "download hq music for free",
+  "main": "simple.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adhitya Nantish",
+  "license": "ISC"
+}
