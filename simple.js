@@ -1,9 +1,6 @@
 const { encode, decode } = require('url-encode-decode');
 // const chalk = require('chalk');
-const { red, blue, bold } = require('kleur');
-
-
-
+const { red, blue, bold, bgBlack, cyan, magenta, green } = require('kleur');
 
 async function getResults(name) {
   const data = await fetch(
@@ -33,14 +30,16 @@ async function main(name) {
   const arr = await getResults(name);
 
   for (const item of arr) {
-    console.log('\n');
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+    console.log(
+      '____________________________________________________________________________________________________________'
+    );
     let temp_name = item.title;
     let name = temp_name.replace(/&quot;/g, '"');
-    console.log(bold(red(name)));
+    console.log(`\x1B[4m\n\x1B[0m`);
+    console.log(bold(blue(name)));
     let temp_subtitle = item.subtitle;
     let subtitle = item.subtitle.replace(/&quot;/g, '"');
-    console.log(subtitle);
+    console.log(magenta(subtitle));
     let encoded = encode(item.more_info.encrypted_media_url);
 
     const url_ = async () => {
@@ -53,4 +52,4 @@ async function main(name) {
   }
 }
 
-main('lokiverse'); // give the song name to be fetched as an argument
+main('badass'); // give the song name to be fetched as an argument
