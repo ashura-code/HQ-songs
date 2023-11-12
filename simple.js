@@ -1,5 +1,4 @@
 const { encode, decode } = require('url-encode-decode');
-// const chalk = require('chalk');
 const { red, blue, bold, bgBlack, cyan, magenta, green } = require('kleur');
 
 async function getResults(name) {
@@ -52,4 +51,4 @@ async function main(name) {
   }
 }
 
-main('badass'); // give the song name to be fetched as an argument
+main('ye raaten ye mausam'); // give the song name to be fetched as an argument
