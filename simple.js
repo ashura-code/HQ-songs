@@ -26,19 +26,25 @@ async function getLink(id) {
 }
 
 async function main(name) {
+  let res_arr = [];
   const arr = await getResults(name);
 
   for (const item of arr) {
-    console.log(
-      '____________________________________________________________________________________________________________'
-    );
+    let obj = {}
+    // console.log(
+    //   '____________________________________________________________________________________________________________'
+    // );
     let temp_name = item.title;
     let name = temp_name.replace(/&quot;/g, '"');
-    console.log(`\x1B[4m\n\x1B[0m`);
-    console.log(bold(blue(name)));
+    // console.log(`\x1B[4m\n\x1B[0m`);
+    // console.log(bold(blue(name)));
+    obj.name = name;
+    let image = item.image;
+    obj.image = image;
     let temp_subtitle = item.subtitle;
     let subtitle = item.subtitle.replace(/&quot;/g, '"');
-    console.log(magenta(subtitle));
+    obj.subtitle = subtitle;
+    // console.log(magenta(subtitle));
     let encoded = encode(item.more_info.encrypted_media_url);
 
     const url_ = async () => {
@@ -47,8 +53,16 @@ async function main(name) {
     };
 
     const result = await url_();
-    console.log(result);
+    // console.log(result);
+    obj.url = result;
+
+    res_arr.push(obj)
   }
+
+  return (res_arr);
 }
 
-main('ye raaten ye mausam'); // give the song name to be fetched as an argument
+// main('blinding lights'); // give the song name to be fetched as an argument
+
+
+module.exports =  main;
